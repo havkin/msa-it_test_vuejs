@@ -1,18 +1,28 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-container fluid>
+    <PostCard v-for="post in posts" :post="post" :key="post.id"/>
+  </v-container>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import PostCard from '@/components/PostCard.vue'
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld
-  }
+    PostCard
+  },
+  computed: {
+
+    posts() {
+      console.log ( this.$store.getters.posts );
+      return this.$store.getters.posts;
+    },
+    // loading() {
+    //   return this.$store.getters.loading;
+    // },
+
+  },
 }
 </script>

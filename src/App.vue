@@ -1,32 +1,45 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app>
+    <v-app-bar app dense color="primary" dark>
+      <v-toolbar-title>
+        <router-link to="/" tag="span" class="pointer">Posts</router-link>
+      </v-toolbar-title>
+
+      <v-spacer></v-spacer>
+
+      <v-toolbar-items class="hidden-sm-and-down">
+        <v-btn text height="100%" tile>
+          <!-- <v-icon left>mdi-{{item.icon}}</v-icon> -->
+          New post
+        </v-btn>
+        <v-btn text height="100%" tile>
+          <!-- <v-icon left>mdi-exit-to-app</v-icon>Logout -->
+          Search
+        </v-btn>
+      </v-toolbar-items>
+    </v-app-bar>
+    <v-content>
+      <router-view></router-view>
+    </v-content>
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
 
-#nav {
-  padding: 30px;
-}
+export default {
+  name: "App",
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+  components: {
+  },
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+  data: () => ({
+    //
+  })
+};
+</script>
+
+<style scoped>
+.pointer {
+  cursor: pointer;
 }
 </style>
