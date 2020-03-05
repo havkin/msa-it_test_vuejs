@@ -1,10 +1,12 @@
 export default ({
    state: {
       posts: [],
+      filteredPosts: [],
    },
    mutations: {
       loadPosts (state, payload) {
          state.posts = payload;
+         state.filteredPosts = payload;
       },
       removePost (state, payload) {
          const findItem = state.posts.findIndex( item => item.id === payload );
@@ -12,13 +14,17 @@ export default ({
       },
       addPost (state, payload) {
          state.posts.push(payload);
-      }
+      },
+      filterPosts (state, payload) {
+         const regexp = new RegExp(payload, "i");
+         state.filteredPosts = state.posts.filter(item => {
+            return (regexp.test(item.userId) || regexp.test(item.title) || regexp.test(item.body));
+         });
+      },
    },
    actions: {
       async fetchPosts ({commit}) {
          commit('setLoading', true);
-
-         const resultAds = [];
 
          try {
 
@@ -45,7 +51,7 @@ export default ({
    },
    getters: {
       posts (state) {
-         return state.posts;
+         return state.filteredPosts;
       },
       lastPostId (state) {
          const lastPost = state.posts[state.posts.length - 1];
