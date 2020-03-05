@@ -29,13 +29,6 @@ export default ({
          try {
 
             const response = await fetch('http://jsonplaceholder.typicode.com/posts');
-            // if (!response.ok) {
-            //    throw new Error('Ответ сети был не ok.');
-            //  }
-            // const contentType = response.headers.get('content-type');
-            // if (!contentType || !contentType.includes('application/json')) {
-            //   throw new TypeError("Ой, мы не получили JSON!");
-            // }
             const posts = await response.json();
 
             commit('loadPosts', posts);

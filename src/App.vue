@@ -7,7 +7,7 @@
 
       <v-spacer></v-spacer>
 
-      <v-toolbar-items class="hidden-sm-and-down">
+      <v-toolbar-items>
 
             <v-text-field
               label="Search"
@@ -26,13 +26,8 @@
           tile
           to="/new"
         >
-          <!-- <v-icon left>mdi-{{item.icon}}</v-icon> -->
           New post
         </v-btn>
-        <!-- <v-btn text height="100%" tile>
-          <v-icon left>mdi-exit-to-app</v-icon>Logout
-          Search
-        </v-btn> -->
       </v-toolbar-items>
     </v-app-bar>
     <v-content>

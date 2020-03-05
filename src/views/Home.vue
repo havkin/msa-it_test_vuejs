@@ -8,7 +8,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import PostCard from '@/components/PostCard.vue'
 import Loading from '@/components/Loading.vue'
 
