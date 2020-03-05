@@ -1,5 +1,10 @@
 <template>
-  <v-card class="mx-auto my-2" color="#26c6da" dark max-width="100%">
+  <v-card
+    class="mx-auto my-2"
+    color="#00B8D4"
+    dark
+    max-width="80%"
+  >
     <v-card-title>
       <span class="title font-weight-light">{{post.title}}</span>
     </v-card-title>
