@@ -9,12 +9,14 @@ export default ({
       removePost (state, payload) {
          const findItem = state.posts.findIndex( item => item.id === payload );
          state.posts.splice(findItem, 1);
+      },
+      addPost (state, payload) {
+         state.posts.push(payload);
       }
    },
    actions: {
       async fetchPosts ({commit}) {
-         // commit('clearError');
-         // commit('setLoading', true);
+         commit('setLoading', true);
 
          const resultAds = [];
 
@@ -29,25 +31,12 @@ export default ({
             //   throw new TypeError("Ой, мы не получили JSON!");
             // }
             const posts = await response.json();
-            // console.log ( posts );
-            // Object.keys(ads).forEach(key => {
-            //    const ad = ads[key];
-            //    resultAds.push(
-            //       new Ad(
-            //          ad.title,
-            //          ad.description,
-            //          ad.ownerId,
-            //          ad.img,
-            //          ad.promo,
-            //          key
-            //       )
-            //    );
-            // });
+
             commit('loadPosts', posts);
-            // commit('setLoading', false);
+            commit('setLoading', false);
+
          } catch (error) {
-            // commit('setLoading', false);
-            // commit('setError', error.message);
+            commit('setLoading', false);
             throw error;
          }
       },
@@ -58,14 +47,10 @@ export default ({
       posts (state) {
          return state.posts;
       },
-      // promoAds (state) {
-      //    return state.ads.filter( ad => ad.promo );
-      // },
-      // myAds (state, getters) {
-      //    return state.ads.filter( ad => ad.ownerId === getters.user.id );
-      // },
-      // adById (state) {
-      //    return adId => state.ads.find( ad => ad.id.toString() === adId );
-      // }
+      lastPostId (state) {
+         const lastPost = state.posts[state.posts.length - 1];
+         return lastPost.id;
+      },
+
    }
  });

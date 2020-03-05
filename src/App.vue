@@ -8,7 +8,12 @@
       <v-spacer></v-spacer>
 
       <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn text height="100%" tile>
+        <v-btn
+          text
+          height="100%"
+          tile
+          to="/new"
+        >
           <!-- <v-icon left>mdi-{{item.icon}}</v-icon> -->
           New post
         </v-btn>

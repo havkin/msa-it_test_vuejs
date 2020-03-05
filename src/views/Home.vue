@@ -1,28 +1,34 @@
 <template>
-  <v-container fluid>
+  <v-container fluid v-if="!loading">
     <PostCard v-for="post in posts" :post="post" :key="post.id"/>
+  </v-container>
+  <v-container v-else>
+    <Loading />
   </v-container>
 </template>
 
 <script>
 // @ is an alias to /src
 import PostCard from '@/components/PostCard.vue'
+import Loading from '@/components/Loading.vue'
 
 export default {
   name: 'Home',
-  components: {
-    PostCard
-  },
+
   computed: {
 
     posts() {
       console.log ( this.$store.getters.posts );
       return this.$store.getters.posts;
     },
-    // loading() {
-    //   return this.$store.getters.loading;
-    // },
+    loading() {
+      return this.$store.getters.loading;
+    },
 
+  },
+  components: {
+    PostCard,
+    Loading,
   },
 }
 </script>
