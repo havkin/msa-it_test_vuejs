@@ -6,6 +6,10 @@ export default ({
       loadPosts (state, payload) {
          state.posts = payload;
       },
+      removePost (state, payload) {
+         const findItem = state.posts.findIndex( item => item.id === payload );
+         state.posts.splice(findItem, 1);
+      }
    },
    actions: {
       async fetchPosts ({commit}) {

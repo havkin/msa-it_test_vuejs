@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto" color="#26c6da" dark max-width="100%">
+  <v-card class="mx-auto my-2" color="#26c6da" dark max-width="100%">
     <v-card-title>
       <span class="title font-weight-light">{{post.title}}</span>
     </v-card-title>
@@ -21,8 +21,10 @@
       </v-list-item>
       <v-btn
         color="blue-grey"
+        outlined
         class="ma-2 white--text"
         fab
+        @click="removePost(post.id)"
       >
         <v-icon dark>mdi-delete-forever</v-icon>
       </v-btn>
@@ -32,7 +34,12 @@
 
 <script>
 export default {
-  props: ["post"]
+  props: ["post"],
+    methods: {
+    removePost ( post ) {
+      this.$store.commit('removePost', post)
+    }
+  }
 };
 </script>
 
